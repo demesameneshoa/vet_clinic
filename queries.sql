@@ -6,3 +6,34 @@ SELECT name,escape_attempts FROM animals WHERE weight_kg>10.5;
 SELECT * FROM animals WHERE neutered=true;
 SELECT * FROM animals WHERE name != 'Gabumon';
 SELECT * FROM animals WHERE weight_kg>=10.4 AND weight_kg<=17.3;
+--Update species column wiht RollBack
+BEGIN;
+UPDATE animals SET species='unspecified';
+SELECT * FROM animals;
+ROLLBACK;
+SELECT * FROM animals;
+-- Update Species with commit
+BEGIN;
+UPDATE animals SET species='digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species='pokemon' WHERE species IS NULL;
+SELECT * FROM animals;
+COMMIT;
+SELECT * FROM animals;
+-- Delete rows with rollback
+BEGIN;
+DELETE FROM animals;
+SELECT * FROM animals;
+ROLLBACK;
+SELECT * FROM animals;
+-- Delete with savepoint
+BEGIN;
+DELETE FROM animals WHERE date_of_birth>'2022-01-01';
+SELECT * FROM animals;
+SAVEPOINT save_point;
+UPDATE animals SET weight_kg=weight_kg*-1;
+SELECT * FROM animals;
+ROLLBACK TO save_point;
+UPDATE animals SET weight_kg=weight_kg*-1 WHERE weight_kg<0;
+SELECT * FROM animals;
+COMMIT;
+SELECT * FROM animals;
