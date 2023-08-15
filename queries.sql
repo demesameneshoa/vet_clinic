@@ -42,7 +42,7 @@ SELECT count(*) FROM animals;
 SELECT count(*) FROM animals WHERE escape_attempts=0;
 SELECT Avg(weight_kg)as Average_Weight_KG FROM animals;  
 --avg escape attempt
-SELECT neutered, AVG(escape_attempts) AS avg_escape_attempts
+SELECT neutered, MAX(escape_attempts) AS max_escape_attempts
 FROM animals
 GROUP BY neutered;
 --min and max weight with species
