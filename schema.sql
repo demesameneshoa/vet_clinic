@@ -7,3 +7,5 @@ CREATE TABLE animals (
     neutered boolean,
     weight_kg real
 );
+
+ALTER TABLE animals ADD species varchar(100);
