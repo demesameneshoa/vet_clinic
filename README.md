@@ -49,6 +49,7 @@
 - **[Updating data with transaction Rollback and Commit Executed]**
 - **[Deleting data with transaction Rollback and Commit Executed]**
 - **[Updating data with transaction savepoint Executed]**
+- **[Querying table with aggregated response Executed]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
