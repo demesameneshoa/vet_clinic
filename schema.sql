@@ -29,3 +29,8 @@ ALTER TABLE animals ADD PRIMARY KEY (id);
 -- remove species column from animals table
 ALTER TABLE animals DROP COLUMN species;
 
+ALTER TABLE animals 
+ADD species_id Int,
+ADd CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+ADD owner_id Int,
+ADD CONSTRAINT fk_owners FOREIGN KEY(owner_id) REFERENCES owners(id);
