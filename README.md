@@ -50,6 +50,11 @@
 - **[Deleting data with transaction Rollback and Commit Executed]**
 - **[Updating data with transaction savepoint Executed]**
 - **[Querying table with aggregated response Executed]**
+- **[Multiple tables added]**
+- **[Primary Keys and Foreign Keys Deployed]**
+- **[Data Inserted in multiple tables]**
+- **[Tables linked with Foreign keys]**
+- **[Querying Multiple tables using Join Executed]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,7 +110,6 @@ No tests here
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] **[Add more tables to the database]**
-- [ ] **[Add relations of tables]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
