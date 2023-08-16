@@ -22,3 +22,10 @@ CREATE TABLE species (
     name varchar(200),
     PRIMARY KEY (id)
 );
+
+--set primary key for animals table
+ALTER TABLE animals ADD PRIMARY KEY (id);
+
+-- remove species column from animals table
+ALTER TABLE animals DROP COLUMN species;
+
