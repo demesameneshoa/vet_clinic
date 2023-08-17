@@ -55,6 +55,9 @@
 - **[Data Inserted in multiple tables]**
 - **[Tables linked with Foreign keys]**
 - **[Querying Multiple tables using Join Executed]**
+- **[Join Tables added for multiple tables]**
+- **[Inserting Data into Join tables Executed]**
+- **[Querying Data by using Join Tables Executed]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,7 +112,7 @@ No tests here
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Add more tables to the database]**
+- [ ] **[Relation Diagram]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
