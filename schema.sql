@@ -62,3 +62,23 @@ CREATE TABLE visits (
     CONSTRAINT fk_animals FOREIGN KEY(animal_id) REFERENCES animals(id),
     CONSTRAINT fk_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
 );
+
+--How many visits were with a vet that did not specialize in that animal's species?
+SELECT count(*)
+FROM visits vi
+JOIN animals a ON vi.animal_id = a.id
+WHERE vi.vet_id NOT IN (
+    SELECT s.vet_id
+    FROM specializations s
+    WHERE s.species_id = a.species_id
+);
+
+--What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+SELECT sp.name, COUNT(*) as visit_count
+FROM visits vi
+JOIN vets v ON vi.vet_id = v.id
+JOIN animals a ON vi.animal_id = a.id
+JOIN species sp ON a.species_id = sp.id
+WHERE v.name = 'Maisy Smith'
+GROUP BY sp.name
+ORDER BY visit_count DESC;
