@@ -31,6 +31,54 @@ ALTER TABLE animals DROP COLUMN species;
 
 ALTER TABLE animals 
 ADD species_id Int,
-ADd CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+ADD CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
 ADD owner_id Int,
 ADD CONSTRAINT fk_owners FOREIGN KEY(owner_id) REFERENCES owners(id);
+
+--Create Table Named Vets
+CREATE TABLE vets (
+    id Int GENERATED ALWAYS AS IDENTITY,
+    name varchar(200),
+    age Int,
+    date_of_graduation Date,
+    PRIMARY KEY (id)
+);
+
+-- Create specialization join table
+CREATE TABLE specializations (
+    species_id Int,
+    vet_id Int,
+    PRIMARY KEY (species_id,vet_id),
+    CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+    CONSTRAINT fk_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
+
+--Create visit join table
+CREATE TABLE visits (
+    animal_id Int,
+    vet_id Int,
+    visit_date Date,
+    PRIMARY KEY (animal_id,vet_id,visit_date),
+    CONSTRAINT fk_animals FOREIGN KEY(animal_id) REFERENCES animals(id),
+    CONSTRAINT fk_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
+
+--How many visits were with a vet that did not specialize in that animal's species?
+SELECT count(*)
+FROM visits vi
+JOIN animals a ON vi.animal_id = a.id
+WHERE vi.vet_id NOT IN (
+    SELECT s.vet_id
+    FROM specializations s
+    WHERE s.species_id = a.species_id
+);
+
+--What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+SELECT sp.name, COUNT(*) as visit_count
+FROM visits vi
+JOIN vets v ON vi.vet_id = v.id
+JOIN animals a ON vi.animal_id = a.id
+JOIN species sp ON a.species_id = sp.id
+WHERE v.name = 'Maisy Smith'
+GROUP BY sp.name
+ORDER BY visit_count DESC;
