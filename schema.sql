@@ -82,3 +82,8 @@ JOIN species sp ON a.species_id = sp.id
 WHERE v.name = 'Maisy Smith'
 GROUP BY sp.name
 ORDER BY visit_count DESC;
+
+
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
