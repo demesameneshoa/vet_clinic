@@ -127,4 +127,10 @@ JOIN vets v ON vi.vet_id = v.id
 JOIN animals a ON vi.animal_id = a.id
 ORDER BY vi.visit_date DESC
 
--- 
+-- queries to check database performance
+
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+explain analyze SELECT * FROM visits where vet_id = 2;
+
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
