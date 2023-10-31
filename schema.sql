@@ -46,21 +46,24 @@ CREATE TABLE vets (
 
 -- Create specialization join table
 CREATE TABLE specializations (
-    species_id Int,
-    vet_id Int,
-    PRIMARY KEY (species_id,vet_id),
-    CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
-    CONSTRAINT fk_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+  id INT GENERATED ALWAYS AS IDENTITY,
+  vet_id INT,
+  species_id INT,
+  FOREIGN KEY (vet_id) REFERENCES vets(id),
+  FOREIGN KEY (species_id) REFERENCES species(id),
+  PRIMARY KEY(id)
 );
 
 --Create visit join table
+
 CREATE TABLE visits (
-    animal_id Int,
-    vet_id Int,
-    visit_date Date,
-    PRIMARY KEY (animal_id,vet_id,visit_date),
-    CONSTRAINT fk_animals FOREIGN KEY(animal_id) REFERENCES animals(id),
-    CONSTRAINT fk_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT,
+  vet_id INT,
+  visit_date DATE,
+  FOREIGN KEY (animal_id) REFERENCES animals(id),
+  FOREIGN KEY (vet_id) REFERENCES vets(id),
+  PRIMARY KEY(id)
 );
 
 --How many visits were with a vet that did not specialize in that animal's species?
@@ -82,3 +85,17 @@ JOIN species sp ON a.species_id = sp.id
 WHERE v.name = 'Maisy Smith'
 GROUP BY sp.name
 ORDER BY visit_count DESC;
+
+
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- add index for a visits table by animal id
+CREATE INDEX idx_animal_id ON visits (animal_id);
+
+-- add index for a visits table by vet id
+CREATE INDEX idx_vet_id ON visits (vet_id);
+
+--add index for owners table by email
+CREATE INDEX idx_email ON owners (email);

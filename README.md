@@ -58,6 +58,8 @@
 - **[Join Tables added for multiple tables]**
 - **[Inserting Data into Join tables Executed]**
 - **[Querying Data by using Join Tables Executed]**
+- **[Bulk data recorded to measure performance audit]**
+- **[Indexes added to table to improve the db performance ]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,6 +107,12 @@ No tests here
 - GitHub: [@demesameneshoa](https://github.com/demesameneshoa)
 - Twitter: [@demesabera](https://twitter.com/demesabera)
 - LinkedIn: [Demes Ameneshoa](https://linkedin.com/in/demesameneshoa)
+
+👤 **Author2**
+
+- GitHub: [@fmanimashaun](https://github.com/fmanimashaun)
+- Twitter: [@fmanimashaun](https://twitter.com/fmanimashaun)
+- LinkedIn: [Fisayo Michael Animashaun ](https://linkedin.com/in/fmanimashaun)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
