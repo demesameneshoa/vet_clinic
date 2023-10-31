@@ -26,7 +26,7 @@
 # 📖 [Vet_Clinic] <a name="about-project"></a>
 
 **[Vet_Clinic]** is a Postgres database structured to record data of a vet clinic in a database
-
+<img src="ER Diagram.png"></img>
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
